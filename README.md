@@ -1,4 +1,7 @@
 # Responsive-form-with-validation
+![Alt Text](a.png)
+![Alt Text](Screenshot 2023-06-05 025748.png)
+
 The provided code represents an HTML form with inline JavaScript for form validation. Here's a breakdown of the code:
 
 1. The HTML structure:
