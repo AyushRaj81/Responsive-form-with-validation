@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form2</title>
+    <link rel="stylesheet" href="formvalidation2.css">
+</head>
+<body>
+    <form action="#" onsubmit="return validation()" >
+    <table>
+    <tr><td><input type="text" id="user" placeholder="User">
+    <span id="userr"></span></td></tr>
+    <tr><td><input type="password" id="pass" placeholder="Password">
+    <span id="passs"></span></td></tr>
+    <tr><td><input type="password" id="cpass" placeholder="Conform Password">
+    <span id="cpasss"></span></td></tr>
+    <tr><td><input type="text" id="email" placeholder="Email">
+    <span id="emaill"></span></td></tr>
+    <tr><td><input type="text" id="mobile" placeholder="Mobile">
+    <span id="mobilee"></span></td></tr>
+    <tr><td><input type="submit" id="submit" placeholder=""></td></tr>
+    </table>
+
+
+
+    </form>
+    <script>
+         var mobile= document.getElementById("mobile").value;
+       
+        
+        function validation(){
+            var user =  document.getElementById("user").value;
+            var emailinput=document.getElementById("email").value;
+            var cpasss= document.getElementById("cpass").value;
+            var pass=document.getElementById("pass").value;
+            var mobile= document.getElementById("mobile").value;
+            if(user == ""){
+                document.getElementById("userr").innerHTML="Empty";
+                
+            }
+            else if(user.length<3){
+                document.getElementById("userr").innerHTML="pls enter more";
+            }
+            else{
+               document.getElementById("userr").innerHTML="";
+            }
+            if(emailinput == ""){
+                document.getElementById("emaill").innerHTML="Empty";
+                
+            }
+            else if(!validateEmail(email)){
+                 document.getElementById("emaill").innerHTML="invalid email";
+            }
+            else{
+                document.getElementById("emaill").innerHTML="";
+            }          
+            if(cpasss == ""){
+                document.getElementById("cpasss").innerHTML="Empty";
+                
+            }
+            else if(cpasss != pass){
+                document.getElementById("cpasss").innerHTML="not matcherd";
+            }
+            else{
+                document.getElementById("cpasss").innerHTML="";
+            }
+            if(pass == ""){
+                document.getElementById("passs").innerHTML="Empty";
+            }
+            else if(pass != ""){
+                validatePassword(pass);
+            }
+            if(mobile == ""){
+                document.getElementById("mobilee").innerHTML="Empty";
+                
+            }
+            else if(!validateMobileNumber(mobile)){
+             document.getElementById("mobilee").innerHTML="mobile invalid";
+            }else{
+                document.getElementById("mobilee").innerHTML="" 
+            }
+            /*mobile validation function*/
+            function validateMobileNumber(mobileNumber) {
+            var pattern = /^\d{10}$/; // Regular expression for 10-digit mobile number
+             return pattern.test(mobile);
+            }
+            /*email validation*/
+            function validateEmail(email) {
+            var ee = emailinput.trim();
+            console.log("iiii");
+             var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+             console.log(pattern.test(ee));
+            return pattern.test(ee);
+            }
+            /*password validation*/
+            function validatePassword(password) {
+            console.log("i am here");
+            if (password.length < 8) {
+                console.log("i am here");
+               document.getElementById("passs").innerHTML="not long"
+            }
+            else if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+                document.getElementById("passs").innerHTML="should container upper and lower case";
+             }
+             else{
+                document.getElementById("passs").innerHTML="";
+             }
+            }
+
+
+
+
+            
+        }
+    </script>
+</body>
+</html>
